@@ -25,7 +25,6 @@ export const Pagination: React.FC<{currentPage:number , totalPages:number , pagi
             pageNumbers.push(props.currentPage + 2);
         }
     }
-    console.log("pageNumber-------> " + pageNumbers);
     return (
         <nav aria-label="...">
             <ul className="pagination">
