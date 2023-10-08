@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export const ExploreTopBooks = () => {
     return (
         <div className='p-5 mb-4 bg-dark header'>
@@ -5,7 +7,7 @@ export const ExploreTopBooks = () => {
                 <div>
                     <h1 className="display-5 fw-bold">Find Your Next Adventure</h1>
                     <p className="col-md-8 fs-4">Where would you like to go next?</p>
-                    <a type="button" className="btn main-color btn-lg text-white" href="#">Explore Top Books</a>
+                    <NavLink type="button" className="btn main-color btn-lg text-white" to={"/search"}>Explore Top Books</NavLink>
                 </div>
 
             </div>
