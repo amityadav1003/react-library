@@ -12,6 +12,7 @@ import { rename } from 'fs';
 import { render } from '@testing-library/react';
 import LoginWidget from './Auth/loginWidget';
 import { oktaConfig } from './lib/oktaConfig';
+import { ReviewListPage } from './layouts/BookCheckoutPage/ReviewListPage/ReviewListPage';
 
 const oktaAuth = new OktaAuth(oktaConfig);
 export const App = () => {
@@ -41,6 +42,9 @@ export const App = () => {
           </Route>
           <Route path='/search'>
             <SearchBooksPage />
+          </Route>
+          <Route path={"/reviewlist/:bookId"}>
+            <ReviewListPage/>
           </Route>
           <Route path={'/checkout/:bookId'}>
             <BookCheckoutPage/>

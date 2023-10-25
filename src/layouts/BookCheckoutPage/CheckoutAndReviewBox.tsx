@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 import BookModel from "../../models/BookModel"
+import { LeaveAReview } from "../../Utils/LeaveAReview";
 
-export const CheckoutAndReviewBox:React.FC<{book : BookModel | undefined , mobile:boolean , currentLoansCount: number,isAuthenticated: any , isCheckout: boolean,checkoutBook: any}> = (props) => {
+export const CheckoutAndReviewBox:React.FC<{book : BookModel | undefined , mobile:boolean , currentLoansCount: number,isAuthenticated: any , isCheckout: boolean,checkoutBook: any , isReviewLeft: Boolean , submitReview:any}> = (props) => {
     function buttonRender(){
         if(props.isAuthenticated){
             if(!props.isCheckout && props.currentLoansCount < 5){
@@ -12,10 +13,26 @@ export const CheckoutAndReviewBox:React.FC<{book : BookModel | undefined , mobil
             }
             else if(props.isCheckout){
                 return (<p><b>Book Checked Out! Enjoy</b></p>)
-            }
-           
+            } 
         }
         return (<Link to={'/login'} className='btn btn-success btn-lg'>Sign in</Link>)
+    }
+
+    function reviewRender(){
+        if(props.isAuthenticated && !props.isReviewLeft){
+            return (<div><LeaveAReview submitReview={props.submitReview}/></div>)
+        }
+        else if(props.isAuthenticated && props.isReviewLeft){
+            return (<p><b>Thank you for your review!</b></p>)
+        }
+        return (
+            <div>
+                <hr/>
+                <p>
+                Sign In To leave a review
+                </p>
+            </div>
+        )
     }
     
     return (
@@ -49,13 +66,12 @@ export const CheckoutAndReviewBox:React.FC<{book : BookModel | undefined , mobil
                     </div>
                 </div>
                 {buttonRender()}
+                
                 <hr/>
                 <p className="mt-3">
                     This Number can change untile placing order has been complete.
                 </p>
-                <p>
-                    Sign in to able to leave a review
-                </p>
+                {reviewRender()}
             </div>
         </div>
  
