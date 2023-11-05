@@ -7,12 +7,14 @@ import { SearchBooksPage } from './layouts/SearchBooksPage/SearchBooksPage';
 import { Redirect, Route, Switch,useHistory } from 'react-router-dom';
 import { BookCheckoutPage } from './layouts/BookCheckoutPage/BookCheckoutPage';
 import {OktaAuth , toRelativeUrl} from '@okta/okta-auth-js';
-import { LoginCallback, Security } from '@okta/okta-react';
+import { LoginCallback, SecureRoute, Security } from '@okta/okta-react';
 import { rename } from 'fs';
 import { render } from '@testing-library/react';
 import LoginWidget from './Auth/loginWidget';
 import { oktaConfig } from './lib/oktaConfig';
 import { ReviewListPage } from './layouts/BookCheckoutPage/ReviewListPage/ReviewListPage';
+import { ShelfPage } from './layouts/ShelfPage/ShelfPage';
+import { MessagesPage } from './layouts/MessagesPage/MessagesPage';
 
 const oktaAuth = new OktaAuth(oktaConfig);
 export const App = () => {
@@ -54,6 +56,9 @@ export const App = () => {
              <LoginWidget config={oktaConfig}/>
           }/>
           <Route path='/login/callback' component={LoginCallback}/>
+          <SecureRoute path={"/shelf"}> <ShelfPage/> </SecureRoute>
+          <SecureRoute path={"/messages"}> <MessagesPage/> </SecureRoute>
+          
         </Switch>
       </div>
       <Footer/>
