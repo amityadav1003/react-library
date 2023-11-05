@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const ExploreTopBooks = () => {
     return (
@@ -7,7 +7,7 @@ export const ExploreTopBooks = () => {
                 <div>
                     <h1 className="display-5 fw-bold">Find Your Next Adventure</h1>
                     <p className="col-md-8 fs-4">Where would you like to go next?</p>
-                    <NavLink type="button" className="btn main-color btn-lg text-white" to={"/search"}>Explore Top Books</NavLink>
+                    <Link type="button" className="btn main-color btn-lg text-white"  to={"/search"}>Explore Top Books</Link>
                 </div>
 
             </div>
