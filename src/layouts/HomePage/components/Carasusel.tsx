@@ -38,8 +38,6 @@ export const Carasusel = () => {
                 setBooks(loadedBooks);
                 setIsLoading(false);
             }
-            console.log("loadedBooks------>" ,loadedBooks)
-            console.log("books---------->" , books);
 
 
         }
