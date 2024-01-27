@@ -153,7 +153,6 @@ export const BookCheckoutPage = () => {
     
     useEffect(() => {
         const fetchBookReviews =async () => {
-            console.log("book--->" , bookId);
             const reviewUrl:string = `http://localhost:8080/api/reviews/search/findByBookId?bookId=${bookId}`;
             const responseReviews = await fetch(reviewUrl);
 
@@ -179,7 +178,6 @@ export const BookCheckoutPage = () => {
                 });
                 weightedStarReviews = weightedStarReviews + responseData[key].rating
             }
-            console.log("reviews=======>" , loadedReviews)
 
             if(loadedReviews){
                 const round = (Math.round((weightedStarReviews / loadedReviews.length) * 2)/2).toFixed(1);
